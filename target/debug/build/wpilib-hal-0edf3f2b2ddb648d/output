@@ -1,0 +1,4 @@
+cargo:rustc-link-search=/home/churst/codingprojects/robot_rs/wpilib-hal/libs
+cargo:rustc-link-lib=wpiHal
+cargo:rustc-link-lib=wpiutil
+cargo:rustc-link-lib=ntcore
