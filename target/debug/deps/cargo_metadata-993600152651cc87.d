@@ -1,0 +1,11 @@
+C:\Users\CID\Documents\robot.rs\target\debug\deps\libcargo_metadata-993600152651cc87.rmeta: C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\lib.rs C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\dependency.rs C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\diagnostic.rs C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\errors.rs C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\messages.rs
+
+C:\Users\CID\Documents\robot.rs\target\debug\deps\libcargo_metadata-993600152651cc87.rlib: C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\lib.rs C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\dependency.rs C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\diagnostic.rs C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\errors.rs C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\messages.rs
+
+C:\Users\CID\Documents\robot.rs\target\debug\deps\cargo_metadata-993600152651cc87.d: C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\lib.rs C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\dependency.rs C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\diagnostic.rs C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\errors.rs C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\messages.rs
+
+C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\lib.rs:
+C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\dependency.rs:
+C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\diagnostic.rs:
+C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\errors.rs:
+C:\Users\CID\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cargo_metadata-0.15.4\src\messages.rs:

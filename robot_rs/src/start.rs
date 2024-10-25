@@ -1,7 +1,7 @@
 use std::{error::Error, sync::{atomic::AtomicBool, Arc}};
 
 use log::{error, warn, info};
-use wpilib_hal::{HAL_Initialize, HAL_SetNotifierThreadPriority, hal_safe_call, HAL_HasMain, HAL_Shutdown, HAL_ExitMain, HAL_RunMain};
+use wpilib_hal::{HAL_ObserveUserProgramStarting,HAL_Initialize, HAL_SetNotifierThreadPriority, hal_safe_call, HAL_HasMain, HAL_Shutdown, HAL_ExitMain, HAL_RunMain};
 
 #[macro_export]
 macro_rules! robot_main {
@@ -76,6 +76,7 @@ pub fn init_all<F: FnOnce(Arc<AtomicBool>) -> Result<(), Box<dyn Error>> + Send 
 
     user_thread.join().unwrap();
   } else {
+    unsafe { HAL_ObserveUserProgramStarting() };
     // Run the user program where it is
     match f(running) {
       Ok(()) => {

@@ -47,7 +47,7 @@ wrapped_traits_nogen!(DigitalRoboRIOOutput, DigitalRoboRIO);
 
 impl DigitalRoboRIO {
   pub fn new(port: usize) -> Self {
-    let handle = hal_safe_call!(HAL_InitializeDIOPort(HAL_GetPort(port as i32), 1, "DigitalRoboRIO::new".as_ptr() as *const i8)).unwrap();
+    let handle = hal_safe_call!(HAL_InitializeDIOPort(HAL_GetPort(port as i32), 1, "DigitalRoboRIO::new".as_ptr() as *const u8)).unwrap();
 
     Self {
       port, handle

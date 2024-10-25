@@ -1,4 +1,6 @@
-use wpilib_hal::{HAL_ControlWord, HAL_GetControlWord, HAL_RefreshDSData};
+use std::ffi::CString;
+
+use wpilib_hal::{HAL_ControlWord, HAL_GetControlWord, HAL_RefreshDSData, HAL_SendConsoleLine, HAL_GetErrorMessage};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum ControlMode {
@@ -42,6 +44,14 @@ impl RobotControlState {
       ds_attached: control_word.dsAttached() != 0,
       fms_attached: control_word.fmsAttached() != 0
     }
+  }
+}
+
+pub fn robot_log(msg: String) {
+  let msg = CString::new(format!("LOG: {}",msg)).unwrap();
+  let status = unsafe {HAL_SendConsoleLine(msg.as_ptr())};
+  if status != 0  {
+    log::warn!("Failed to log to driver station: {:?}", unsafe{std::ffi::CStr::from_ptr(HAL_GetErrorMessage(status))});
   }
 }
 
