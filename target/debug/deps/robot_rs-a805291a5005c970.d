@@ -1,0 +1,24 @@
+/home/churst/codingprojects/robot_rs/target/debug/deps/librobot_rs-a805291a5005c970.rmeta: robot_rs/src/lib.rs robot_rs/src/actuators/mod.rs robot_rs/src/actuators/motors.rs robot_rs/src/actuators/pwm.rs robot_rs/src/behaviours/mod.rs robot_rs/src/control/mod.rs robot_rs/src/control/control_lock.rs robot_rs/src/control/edge_detect.rs robot_rs/src/control/pid.rs robot_rs/src/ds.rs robot_rs/src/input/mod.rs robot_rs/src/input/hid.rs robot_rs/src/input/xbox.rs robot_rs/src/models/mod.rs robot_rs/src/models/dc_motor.rs robot_rs/src/sensors/mod.rs robot_rs/src/sensors/digital.rs robot_rs/src/start.rs robot_rs/src/time.rs robot_rs/src/types.rs
+
+/home/churst/codingprojects/robot_rs/target/debug/deps/robot_rs-a805291a5005c970.d: robot_rs/src/lib.rs robot_rs/src/actuators/mod.rs robot_rs/src/actuators/motors.rs robot_rs/src/actuators/pwm.rs robot_rs/src/behaviours/mod.rs robot_rs/src/control/mod.rs robot_rs/src/control/control_lock.rs robot_rs/src/control/edge_detect.rs robot_rs/src/control/pid.rs robot_rs/src/ds.rs robot_rs/src/input/mod.rs robot_rs/src/input/hid.rs robot_rs/src/input/xbox.rs robot_rs/src/models/mod.rs robot_rs/src/models/dc_motor.rs robot_rs/src/sensors/mod.rs robot_rs/src/sensors/digital.rs robot_rs/src/start.rs robot_rs/src/time.rs robot_rs/src/types.rs
+
+robot_rs/src/lib.rs:
+robot_rs/src/actuators/mod.rs:
+robot_rs/src/actuators/motors.rs:
+robot_rs/src/actuators/pwm.rs:
+robot_rs/src/behaviours/mod.rs:
+robot_rs/src/control/mod.rs:
+robot_rs/src/control/control_lock.rs:
+robot_rs/src/control/edge_detect.rs:
+robot_rs/src/control/pid.rs:
+robot_rs/src/ds.rs:
+robot_rs/src/input/mod.rs:
+robot_rs/src/input/hid.rs:
+robot_rs/src/input/xbox.rs:
+robot_rs/src/models/mod.rs:
+robot_rs/src/models/dc_motor.rs:
+robot_rs/src/sensors/mod.rs:
+robot_rs/src/sensors/digital.rs:
+robot_rs/src/start.rs:
+robot_rs/src/time.rs:
+robot_rs/src/types.rs:

@@ -1,0 +1,11 @@
+/home/churst/codingprojects/robot_rs/target/debug/deps/libcargo_metadata-ec7003d0469cf4b4.rmeta: /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/lib.rs /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/dependency.rs /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/diagnostic.rs /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/errors.rs /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/messages.rs
+
+/home/churst/codingprojects/robot_rs/target/debug/deps/libcargo_metadata-ec7003d0469cf4b4.rlib: /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/lib.rs /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/dependency.rs /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/diagnostic.rs /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/errors.rs /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/messages.rs
+
+/home/churst/codingprojects/robot_rs/target/debug/deps/cargo_metadata-ec7003d0469cf4b4.d: /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/lib.rs /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/dependency.rs /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/diagnostic.rs /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/errors.rs /home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/messages.rs
+
+/home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/lib.rs:
+/home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/dependency.rs:
+/home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/diagnostic.rs:
+/home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/errors.rs:
+/home/churst/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cargo_metadata-0.15.4/src/messages.rs:

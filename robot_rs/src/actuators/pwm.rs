@@ -5,7 +5,7 @@ use wpilib_hal::{
     HAL_SetPWMSpeed,
 };
 
-use crate::macros::wrapped_traits_nogen;
+use macros::wrapped_traits_nogen;
 
 pub struct PWM {
     port: usize,
@@ -145,4 +145,3 @@ impl PWMServoController {
 }
 
 wrapped_traits_nogen!(PWMServoController, PWM);
-
