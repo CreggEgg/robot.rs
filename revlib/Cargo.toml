@@ -1,0 +1,11 @@
+[package]
+name = "revlib"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+io = { path = "../io"}
+
+[build-dependencies]
+bindgen = "0.70.1"
+
