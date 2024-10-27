@@ -92,14 +92,14 @@ fn main() {
                       //     .to_str()
                       //     .unwrap()
     );
-    println!(
-        "cargo:rustc-link-search={}",
-        paths.revlib_path.display() // PathBuf::from("libs")
-                                    //     .canonicalize()
-                                    //     .unwrap()
-                                    //     .to_str()
-                                    //     .unwrap()
-    );
+    // println!(
+    //     "cargo:rustc-link-search={}",
+    //     paths.revlib_path.display() // PathBuf::from("libs")
+    //                                 //     .canonicalize()
+    //                                 //     .unwrap()
+    //                                 //     .to_str()
+    //                                 //     .unwrap()
+    // );
     let wpilib = [
         paths.wpilib_artifacts_path.to_str().unwrap(),
         "maven",
@@ -109,6 +109,7 @@ fn main() {
     ];
     let wpi_version = "2024.3.2";
     let ni_version = "2024.2.1";
+    let revlib_version = "2024.2.4";
 
     extract_wpilib_lib("hal", "wpiHal", wpi_version, &paths);
     extract_wpilib_lib("wpinet", "wpinet", wpi_version, &paths);
@@ -164,6 +165,23 @@ fn main() {
                // .concat(),
         ),
         &format!("linux/athena/shared/libfpgalvshim.so"),
+    );
+    find_deps::extract_lib_to_frc_libs(
+        PathBuf::from(
+            format!(
+                "{}/maven/com/revrobotics/frc/REVLib-driver/{revlib_version}/REVLib-driver-{revlib_version}-linuxathena.zip",
+                paths.revlib_path.display(),
+            ), //     wpilib[..],
+               //     [
+               //         "hal",
+               //         "hal-cpp",
+               //         "2024.3.2",
+               //         "hal-cpp-2024.3.2-linuxathena.zip",
+               //     ][..],
+               // ]
+               // .concat(),
+        ),
+        &format!("linux/athena/shared/libREVLibDriver.so"),
     );
 
     println!("cargo::rustc-link-lib=dylib=wpiHal");
