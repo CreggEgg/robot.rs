@@ -7,6 +7,11 @@ use wpilib_hal::{
 
 use macros::wrapped_traits_nogen;
 
+#[cfg(not(target_arch = "arm"))]
+type ArchitectureSpecificPointer = i8;
+#[cfg(target_arch = "arm")]
+type ArchitectureSpecificPointer = u8;
+
 pub struct PWM {
     port: usize,
     handle: HAL_DigitalHandle,
@@ -23,7 +28,7 @@ impl PWM {
     pub fn new(port: usize) -> Self {
         let handle = hal_safe_call!(HAL_InitializePWMPort(
             HAL_GetPort(port as i32),
-            "PWM::new".as_ptr() as *const u8
+            "PWM::new".as_ptr() as *const ArchitectureSpecificPointer
         ))
         .unwrap();
 

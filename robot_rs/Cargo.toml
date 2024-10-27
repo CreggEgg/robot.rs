@@ -28,6 +28,7 @@ macros = { path = "../macros"}
 [build-dependencies]
 anyhow = "1.0.69"
 cargo_metadata = "0.15.3"
+find-deps = { path = "../find-deps"}
 
 [dev-dependencies]
 futures = "0.3.27"

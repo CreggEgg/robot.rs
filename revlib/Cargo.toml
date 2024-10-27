@@ -8,4 +8,4 @@ io = { path = "../io"}
 
 [build-dependencies]
 bindgen = "0.70.1"
-
+find-deps = { path = "../find-deps" }

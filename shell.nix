@@ -12,8 +12,8 @@ mkShell {
 
   NIX_ENFORCE_PURITY = true;
 
-  # REVLIB_DIR = "/home/churst/Downloads/revlib/";
-  # WPILIB_DIR = "/home/churst/Downloads//";
+  # REVLIB_DIR = "";
+  WPILIB_DIR = "CHANGE ME!!!!!!";
 
   LIBCLANG_PATH="${llvmPackages.libclang.lib}/lib";
 

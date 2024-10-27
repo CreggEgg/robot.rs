@@ -6,6 +6,11 @@ use wpilib_hal::{
 
 use macros::{wrapped_traits, wrapped_traits_nogen};
 
+#[cfg(not(target_arch = "arm"))]
+type ArchitectureSpecificPointer = i8;
+#[cfg(target_arch = "arm")]
+type ArchitectureSpecificPointer = u8;
+
 pub struct DigitalRoboRIO {
     port: usize,
     handle: HAL_DigitalHandle,
@@ -18,18 +23,13 @@ wrapped_traits_nogen!(DigitalRoboRIOInput, DigitalRoboRIO);
 wrapped_traits_nogen!(DigitalRoboRIOOutput, DigitalRoboRIO);
 
 impl DigitalRoboRIO {
-<<<<<<< HEAD
-  pub fn new(port: usize) -> Self {
-    let handle = hal_safe_call!(HAL_InitializeDIOPort(HAL_GetPort(port as i32), 1, "DigitalRoboRIO::new".as_ptr() as *const u8)).unwrap();
-=======
     pub fn new(port: usize) -> Self {
         let handle = hal_safe_call!(HAL_InitializeDIOPort(
             HAL_GetPort(port as i32),
             1,
-            "DigitalRoboRIO::new".as_ptr() as *const i8
+            "DigitalRoboRIO::new".as_ptr() as *const ArchitectureSpecificPointer
         ))
         .unwrap();
->>>>>>> 21853c4 (added revlib in as a feature and did some refactoring to allow for more shared code)
 
         Self { port, handle }
     }

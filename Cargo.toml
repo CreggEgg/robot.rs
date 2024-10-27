@@ -1,7 +1,9 @@
 
 [workspace]
-members = [ "io", "macros",
-  # "nt4_rs",
+members = [ 
+
   "robot_rs",
+"io", "macros",
+  # "nt4_rs",
   "wpilib-hal"
-]
+, "find-deps"]
