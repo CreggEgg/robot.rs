@@ -2,6 +2,11 @@ use std::{error::Error, fmt::Display, slice};
 
 use wpilib_hal::{NT_Now, NT_Type, NT_Value, WPI_String};
 
+#[cfg(not(target_arch = "arm"))]
+type ArchitectureSpecificPointer = i8;
+#[cfg(target_arch = "arm")]
+type ArchitectureSpecificPointer = u8;
+
 #[derive(Debug, Clone)]
 pub enum NTError {
     TypeMismatch,
@@ -202,13 +207,15 @@ impl Value {
             Value::String(v) => {
                 ntv.type_ = NT_Type::NT_STRING;
                 ntv.data.v_string.len = v.as_bytes().len() as usize;
-                ntv.data.v_string.str_ = v.as_ptr() as *const u8; // These casts are very unsafe, but we make the assumption that NT doesn't mutate the pointer
+                ntv.data.v_string.str_ = v.as_ptr() as *const ArchitectureSpecificPointer; // These casts are very unsafe, but we make the assumption that NT doesn't mutate the pointer
                 f(ntv)
             }
             Value::Raw(v) => {
                 ntv.type_ = NT_Type::NT_RAW;
                 ntv.data.v_raw.size = v.len() as usize;
-                ntv.data.v_raw.data = v.as_ptr() as *mut u8; // These casts are very unsafe, but we make the assumption that NT doesn't mutate the pointer
+                ntv.data.v_raw.data = v.as_ptr() as *mut u8;
+
+                // These casts are very unsafe, but we make the assumption that NT doesn't mutate the pointer
                 f(ntv)
             }
             Value::BooleanArray(arr) => {
@@ -232,7 +239,7 @@ impl Value {
                 let mut buf = vec![Default::default(); arr.len()];
                 for i in 0..arr.len() {
                     buf[i] = WPI_String {
-                        str_: arr[i].as_ptr() as *const u8,
+                        str_: arr[i].as_ptr() as *const ArchitectureSpecificPointer,
                         len: arr[i].len() as usize,
                     }
                 }
