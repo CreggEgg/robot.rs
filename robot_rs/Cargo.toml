@@ -22,6 +22,7 @@ nt4_rs = { path = "../nt4_rs" }
 num-traits = "0.2.15"
 strum = { version = "0.24", features = ["derive"] }
 revlib = { path = "../revlib", optional = true}
+ctre = { path = "../ctre"}
 io = { path = "../io"}
 macros = { path = "../macros"}
 

@@ -85,4 +85,3 @@ impl<I: DigitalInput> EdgeDetectorOwned<I> {
         }
     }
 }
-

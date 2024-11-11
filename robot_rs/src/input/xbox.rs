@@ -71,4 +71,3 @@ impl Xbox {
 }
 
 wrapped_traits_nogen!(Xbox, HID);
-

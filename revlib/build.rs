@@ -11,7 +11,7 @@ fn main() {
     // );
     // println!("{}", inc5);
 
-    let bindings = bindgen::Builder::default()
+    let mut builder = bindgen::Builder::default()
         .derive_default(true)
         // .derive_ord(true)
         .clang_arg("-Iinclude")
@@ -36,7 +36,12 @@ fn main() {
         ))
         */
         .clang_arg("-xc++")
-        .clang_arg("-std=c++14")
+        .clang_arg("-std=c++14");
+
+    #[cfg(target_os = "windows")]
+    {
+        //panic!("on linux");
+        builder = builder
     .clang_arg(format!(
         "-isystem{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/c++/12/",
         paths.wpilib_artifacts_path.display())
@@ -53,19 +58,40 @@ fn main() {
         "-isystem{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/lib/gcc/arm-nilrt-linux-gnueabi/12/include/",
         paths.wpilib_artifacts_path.display()
 ))
+    //}
+    // #[cfg(target_os = "windows")]
+    // {
+    //     //panic!("on windows");
+    //     builder = builder
+    // .clang_arg(format!(
+    //     "-isystem{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/c++/12/",
+    //     paths.wpilib_artifacts_path.display())
+    // )
 //     .clang_arg(format!(
-//         "-isystem{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/linux",
+//         "-isystem{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/c++/12/arm-nilrt-linux-gnueabi/",
 //         paths.wpilib_artifacts_path.display()
 // ))
 //     .clang_arg(format!(
-//         "-isystem{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/c++/12/tr1/",
+//         "-isystem{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/",
 //         paths.wpilib_artifacts_path.display()
 // ))
-        // .clang_arg(format!("-idirafter\"{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/c++/12/\"", paths.wpilib_artifacts_path.display()))
-        // .clang_arg(format!("-idirafter\"{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/c++/12/arm-nilrt-linux-gnueabi/\"",paths.wpilib_artifacts_path.display()))
-        // .clang_arg(format!("-idirafter\"{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/\"", paths.wpilib_artifacts_path.display()))
-        .generate()
-        .unwrap();
+//     .clang_arg(format!(
+//         "-isystem{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/lib/gcc/arm-nilrt-linux-gnueabi/12/include/",
+//         paths.wpilib_artifacts_path.display()
+// ))
+    }
+    //     .clang_arg(format!(
+    //         "-isystem{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/linux",
+    //         paths.wpilib_artifacts_path.display()
+    // ))
+    //     .clang_arg(format!(
+    //         "-isystem{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/c++/12/tr1/",
+    //         paths.wpilib_artifacts_path.display()
+    // ))
+    // .clang_arg(format!("-idirafter\"{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/c++/12/\"", paths.wpilib_artifacts_path.display()))
+    // .clang_arg(format!("-idirafter\"{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/c++/12/arm-nilrt-linux-gnueabi/\"",paths.wpilib_artifacts_path.display()))
+    // .clang_arg(format!("-idirafter\"{}/roborio/arm-nilrt-linux-gnueabi/sysroot/usr/include/\"", paths.wpilib_artifacts_path.display()))
+    let bindings = builder.generate().unwrap();
     let out_path = PathBuf::from(std::env::var("OUT_DIR").unwrap());
     bindings
         .write_to_file(out_path.join("bindings.rs"))

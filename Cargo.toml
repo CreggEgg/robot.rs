@@ -1,7 +1,7 @@
 
 [workspace]
 members = [ 
-
+  "ctre",
   "robot_rs",
 "io", "macros",
   # "nt4_rs",

@@ -6,24 +6,31 @@ use std::env;
 pub struct Paths {
     pub wpilib_artifacts_path: PathBuf,
     pub revlib_path: PathBuf,
+    pub ctre_path: PathBuf,
     // pub wpilib_libs_path: PathBuf
 }
 pub fn get_paths() -> Paths {
-    let revlib_path = std::path::PathBuf::from(
+    let revlib_path = dunce::canonicalize(std::path::PathBuf::from(
         env::var("REVLIB_DIR").expect("Please set the REVLIB_DIR environment variable"),
     )
-    .canonicalize()
+    )
     .unwrap(); // include path
                // let wpilib_libs_path = std::path::PathBuf::from(
                //     env::var("WPILIB_LIBS_DIR").expect("Please set the WPILIB_LIBS_DIR environment variable"),
                // )
                // .canonicalize()
                // .unwrap(); // include path
-    let wpilib_artifacts_path = std::path::PathBuf::from(
+    let ctre_path = dunce::canonicalize(std::path::PathBuf::from(
+                env::var("CTRE_DIR")
+                    .expect("Please set CTRE_DIR environment variable"),
+            )
+            )
+            .unwrap();
+    let wpilib_artifacts_path = dunce::canonicalize(std::path::PathBuf::from(
         env::var("WPILIB_ARTIFACTS_DIR")
             .expect("Please set WPILIB_ARTIFACTS_DIR environment variable"),
     )
-    .canonicalize()
+    )
     .unwrap(); // include path
                // let mut b = autocxx_build::Builder::new("src/main.rs", &[&path])
                //     .extra_clang_args(&["-std=c++20"])
@@ -33,10 +40,11 @@ pub fn get_paths() -> Paths {
                //     .compile("revlib"); // arbitrary library name, pick anything
     dbg!(&wpilib_artifacts_path);
     dbg!(&revlib_path);
-    // dbg!(&wpilib_libs_path);
+    dbg!(&ctre_path);
     Paths {
         revlib_path,
         wpilib_artifacts_path,
+        ctre_path
         // wpilib_libs_path
     }
 }
@@ -45,13 +53,14 @@ pub fn get_frc_libs_path() -> PathBuf {
     target_dir.push("frc_libs");
 
     if !fs::exists(&target_dir).unwrap_or(false) {
-        // let _ = fs::remove_dir_all(target_dir);
-        fs::create_dir(&target_dir).unwrap();
+    //let _ = fs::remove_dir_all(&target_dir);
+    fs::create_dir(&target_dir).unwrap();
     }
     target_dir
 }
 
 pub fn extract_lib_to_frc_libs(zipped: PathBuf, lib: &str) {
+    dbg!(&zipped);
     let mut archive = zip::ZipArchive::new(fs::File::open(zipped).unwrap()).unwrap();
 
     let mut file = archive
@@ -67,6 +76,7 @@ pub fn extract_lib_to_frc_libs(zipped: PathBuf, lib: &str) {
                                                             // .unwrap(),
     );
     if fs::exists(&out_path).unwrap_or(false) {
+        println!("out_path {:?}",out_path);
         return;
     }
 

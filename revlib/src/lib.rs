@@ -29,7 +29,34 @@ macro_rules! safe_call {
   }};
 
 }
-
+#[derive(Debug, Clone, Copy)]
+pub enum DutyCycleMode {
+    Absolute,
+    Relative
+}
+impl Into<c_SparkMax_DutyCycleMode> for DutyCycleMode {
+    fn into(self) -> c_SparkMax_DutyCycleMode {
+        match self {
+            DutyCycleMode::Absolute => c_SparkMax_DutyCycleMode::c_SparkMax_kDutyCycleAbsolute,
+            DutyCycleMode::Relative => c_SparkMax_DutyCycleMode::c_SparkMax_kDutyCycleRelative,
+        }
+    }
+}
+#[derive(Debug, Clone, Copy)]
+pub enum DataPortConfig {
+    DataPortConfigNone,
+    DataPortConfigLimitSwitchesAndAbsoluteEncoder,
+    DataPortConfigAltEncoder,
+}
+impl Into<c_SparkMax_DataPortConfig> for DataPortConfig {
+    fn into(self) -> c_SparkMax_DataPortConfig {
+        match self {
+            DataPortConfig::DataPortConfigNone => c_SparkMax_DataPortConfig::c_SparkMax_kDataPortConfigNone,
+            DataPortConfig::DataPortConfigLimitSwitchesAndAbsoluteEncoder => c_SparkMax_DataPortConfig::c_SparkMax_kDataPortConfigLimitSwitchesAndAbsoluteEncoder,
+            DataPortConfig::DataPortConfigAltEncoder => c_SparkMax_DataPortConfig::c_SparkMax_kDataPortConfigAltEncoder,
+        }
+    }
+}
 #[derive(Debug)]
 pub enum RevError {
     None,
@@ -112,6 +139,7 @@ impl RevMotorControllerModel for SparkFlex {
 //     fn get_raw(&self) -> rev::c_SparkMax_SparkModel;
 // }
 
+
 pub trait RevMotorControllerModel {
     fn raw() -> rev::c_SparkMax_SparkModel;
 }
@@ -163,6 +191,31 @@ impl<Controller: RevMotorControllerModel> RevMotorController<Controller> {
         } else {
             Ok(mc)
         }
+    }
+
+    pub fn get_encoder_position(&self) -> Result<f32, RevError> {
+        safe_call!(c_SparkMax_GetEncoderPosition(self.handle) -> f32)
+    }
+    pub fn get_encoder_velocity(&self) -> Result<f32, RevError> {
+        safe_call!(c_SparkMax_GetEncoderVelocity(self.handle) -> f32)
+    }
+    pub fn get_alt_encoder_position(&self) -> Result<f32, RevError> {
+        safe_call!(c_SparkMax_GetAltEncoderPosition(self.handle) -> f32)
+    }
+    pub fn get_alt_encoder_velocity(&self) -> Result<f32, RevError> {
+        safe_call!(c_SparkMax_GetAltEncoderVelocity(self.handle) -> f32)
+    }
+    pub fn get_duty_cycle_encoder_position(&self) -> Result<f32, RevError> {
+        safe_call!(c_SparkMax_GetDutyCyclePosition(self.handle) -> f32)
+    }
+    pub fn get_duty_cycle_encoder_velocity(&self) -> Result<f32, RevError> {
+        safe_call!(c_SparkMax_GetDutyCycleVelocity(self.handle) -> f32)
+    }
+    pub fn set_duty_cycle_mode(&mut self, duty_cycle_mode: DutyCycleMode) -> Result<(), RevError> {
+        safe_call!(c_SparkMax_SetDutyCycleMode(self.handle, duty_cycle_mode.into()))
+    }
+    pub fn set_data_port_config(&mut self, config: DataPortConfig) -> Result<(), RevError> {
+        safe_call!(c_SparkMax_AttemptToSetDataPortConfig(self.handle, config.into()))
     }
 }
 

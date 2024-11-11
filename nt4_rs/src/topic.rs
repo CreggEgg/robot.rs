@@ -59,4 +59,3 @@ impl Topic {
 
     // TODO: Properties, Pub, Sub
 }
-
